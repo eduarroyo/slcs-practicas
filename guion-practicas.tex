@@ -1,0 +1,83 @@
+\documentclass[10pt, titlepage]{article}
+% preámbulo
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[document]{ragged2e}
+\usepackage[spanish,activeacute]{babel}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{float}
+
+\geometry{
+    a4paper,
+    left=25mm,
+    right=25mm,
+    top=25mm,
+    bottom=25mm
+}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Eduardo Arroyo Ramírez \\ i12arrae@uco.es}
+\lhead{Software Libre y Compromiso Social \\ Memoria de prácticas}
+\lfoot{\rightmark}
+\rfoot{Página \thepage}
+
+\def\code#1{\texttt{#1}}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+
+\title{Software Libre y Compromiso Social - Memoria de prácticas}
+\author{Eduardo Arroyo Ramírez}
+
+\begin{document}
+
+\graphicspath{ {Practica1/capturas/} }
+\graphicspath{ {Practica2/capturas/} }
+\graphicspath{ {Practica3/capturas/} }
+\graphicspath{ {Practica4/capturas/} }
+\graphicspath{ {Practica5/capturas/} }
+\graphicspath{ {Practica6/capturas/} }
+
+\makeatletter
+\begin{titlepage}
+    \begin{center}
+        {\scshape\Large Escuela Politécnica Superior \par}
+        \vspace{0.5cm}
+        {\scshape\large Universidad de Córdoba \par}
+        \vspace{4cm}
+        {\scshape\Huge Software Libre y Compromiso Social \par}
+        \vspace{0.5cm}
+        {\itshape\Large Memoria de prácticas \par}
+    \end{center}
+    \vspace{13cm}
+    \begin{flushright}
+        \@author\space \\
+        i12arrae@uco.es \\
+        Curso 2019/2020
+    \end{flushright}
+\end{titlepage}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+% Aquí comienza el cuerpo del documento
+\justify
+\setlength{\parindent}{1.5cm}
+\include{Practica1/practica_1}
+% \include{Practica_2/practica_2}
+% \include{Practica_3/practica_3}
+% \include{Practica_4/practica_4}
+% \include{Practica_5/practica_5}
+% \include{Practica_6/practica_6}
+
+\end{document}
