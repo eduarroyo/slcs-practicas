@@ -1,3 +1,4 @@
-.build
+.build*
 .vscode
 SLCS - Práctica 1.gdoc
+*.aux
