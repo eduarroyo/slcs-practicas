@@ -10,6 +10,36 @@
 \usepackage{geometry}
 \usepackage{float}
 
+\usepackage{xcolor}
+\usepackage{listings}
+\definecolor{mGreen}{rgb}{0,0.6,0}
+\definecolor{mGray}{rgb}{0.5,0.5,0.5}
+\definecolor{mPurple}{rgb}{0.58,0,0.82}
+\definecolor{backgroundColour}{rgb}{0.95,0.95,0.92}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+
+\lstdefinestyle{CStyle}{
+    commentstyle=\color{dkgreen},
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{mGray},
+    stringstyle=\color{mauve},
+    basicstyle={\small\ttfamily},
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+    language=C
+}
+
 \geometry{
     a4paper,
     left=25mm,
@@ -73,10 +103,10 @@
 % Aquí comienza el cuerpo del documento
 \justify
 \include{Practica1/practica_1}
-% \include{Practica_2/practica_2}
-% \include{Practica_3/practica_3}
-% \include{Practica_4/practica_4}
-% \include{Practica_5/practica_5}
-% \include{Practica_6/practica_6}
+\include{Practica2/practica_2}
+% \include{Practica3/practica_3}
+% \include{Practica4/practica_4}
+% \include{Practica5/practica_5}
+% \include{Practica6/practica_6}
 
 \end{document}
