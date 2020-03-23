@@ -6,7 +6,6 @@
 \usepackage[spanish,activeacute]{babel}
 \usepackage{mathtools}
 \usepackage{hyperref}
-\usepackage{xcolor}
 \usepackage{geometry}
 \usepackage{float}
 
@@ -61,8 +60,9 @@
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,
-    filecolor=magenta,
-    urlcolor=cyan,
+    filecolor=blue,
+    urlcolor=blue,
+    citecolor=black
 }
 
 \title{Software Libre y Compromiso Social - Memoria de prácticas}
@@ -70,12 +70,7 @@
 
 \begin{document}
 
-\graphicspath{ {Practica1/capturas/} }
-\graphicspath{ {Practica2/capturas/} }
-\graphicspath{ {Practica3/capturas/} }
-\graphicspath{ {Practica4/capturas/} }
-\graphicspath{ {Practica5/capturas/} }
-\graphicspath{ {Practica6/capturas/} }
+\graphicspath{ {Practica1/figuras/},{Practica2/figuras/} }
 
 \makeatletter
 \begin{titlepage}
@@ -100,6 +95,7 @@
 \listoffigures
 \listoftables
 
+
 % Aquí comienza el cuerpo del documento
 \justify
 \include{Practica1/practica_1}
@@ -108,5 +104,9 @@
 % \include{Practica4/practica_4}
 % \include{Practica5/practica_5}
 % \include{Practica6/practica_6}
+
+\bibliographystyle{ieeetr}
+\bibliography{guion-practicas}
+\addcontentsline{toc}{section}{Bibliografía}
 
 \end{document}

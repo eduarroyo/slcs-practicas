@@ -1,11 +1,62 @@
 \part{Práctica 2}
+\setcounter{section}{0}
 \section{Ejercicio 1}
 \begin{center}
     \parbox{12cm}{\justify\textit{Explica brevemente qué es un sistema de control de versiones distribuido y sus diferencias con respecto a uno centralizado. Entra en la web de Git y revisa la documentación. Busca manuales, tutoriales, etc. de Git. Describe y compara con Git algún otro sistema de control de versiones distribuido (Mercurial, etc.).
     }}
 \end{center}
 
+Un \textbf{sistema de control de versiones distribuido} es una forma de control de versiones en la cuál el código, incluyendo el histórico, está replicado en las computadoras de cada desarrollador \cite{wikipedia_2020:Distributed_Version_Control}. Esto permite a cada desarrollador trabajar en el código sin necesidad de estar conectado a un servidor central \cite{juancarlosfernandez_2010}.
+Las ventajas que ofrece un sistema distribuido frente a uno centralizado son:
+\begin{itemize}
+    \item No hay una copia canónica.
+    \item Soporta operaciones desconectadas: La mayoría de operaciones comunes como confirmaciones, consultas del historial, diff, y revertir cambios son rápidas, porque no se necesita conexión con el sistema central.
+    \item Cada copia de trabajo es una copia de seguridad.
+    \item Ramas experimentales: crear y eliminar ramas es rápido y simple.
+    \item Fomenta la colaboración entre desarrolladores, permitiendo por ejemplo compartir cambios sin necesidad de confirmarlos en el servidor central.
+\end{itemize}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.16]{sistema-centralizado}
+    \caption{Esquema de control de versiones centralizado}
+    \label{fig:sistema-centralizado}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.16]{sistema-distribuido}
+    \caption{Esquema de control de versiones distribuido}
+    \label{fig:sistema-distribuido}
+\end{figure}
+
+
+La web de Git tiene un apartado de \href{https://git-scm.com/doc}{documentación} con enlaces a los documentos siguientes:
+\begin{itemize}
+    \item \href{https://git-scm.com/docs}{Manual de referencia}.
+    \item \href{https://github.github.com/training-kit/}{Algunos} \href{https://ndpsoftware.com/git-cheatsheet.html}{cheatsheets}
+    \item Libro online \href{https://git-scm.com/book/en/v2}{Pro Git}
+    \item Algunos \href{https://git-scm.com/video/what-is-version-control}{videos} \href{https://git-scm.com/video/what-is-git}{básicos} \href{https://git-scm.com/video/get-going}{sobre} \href{https://git-scm.com/video/quick-wins}{Git}.
+    \item Una \href{https://git-scm.com/doc/ext}{recopilación de tutoriales}, libros, videos y cursos sobre Git.
+\end{itemize}
+
+Aparte de Git, existen otros sistemas de control de versiones distribuidos como por ejemplo Mercurial. Está implementado principalmente haciendo uso del lenguaje de programación Python, pero incluye una implementación binaria de diff escrita en C. Mercurial fue escrito originalmente para funcionar sobre GNU/Linux. Ha sido adaptado para Windows, Mac OS X y la mayoría de otros sistemas tipo Unix. Mercurial es, sobre todo, un programa para la línea de comandos. Todas las operaciones de Mercurial se invocan como opciones dadas a su programa motor, hg (cuyo nombre hace referencia al símbolo químico del mercurio) \cite{wikipedia_2019:Mercurial}.
+
+Según Intland Software, las principales diferencias entre Git y Mercurial son las siguientes \cite{intland_2015:Pros_Cons_Mercurial_Git}:
+\begin{itemize}
+    \item En ambos sistemas, la historia tiene forma de grafo acíclico. Sin embargo, Mercurial ofrece un histórico lineal simple que puede causar confusión debido a la falta de ifnormación. Git, por el contrario, permite seguir el historial hacia atrás, pero es complicado de hacer.
+    \item A menudo se piensa que Git maneja las ramas mejor que Mercurial. La estructura de ramas de Git ayuda a evitar errores en los ``merges'' de código.
+    \item Git refuerza la excelencia técnica.
+    \item Git es más potente para proyectos grandes.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=1]{git-mercurial-pros-cons}
+    \caption{Pros y contras de Git y Mercurial\cite{intland_2015:Pros_Cons_Mercurial_Git}}
+    \label{fig:git-mercurial-pros-cons}
+\end{figure}
 
 
 \section{Ejercicio 2}
@@ -15,7 +66,7 @@
     \end{center}
 
 
-\begin{lstlisting}[xleftmargin=.16\textwidth]
+\begin{lstlisting}[xleftmargin=.16\textwidth,language=bash]
 $ git config --global user.name "i22lojal"
 $ git config --global user.email "i22lojal@uco.es"
 \end{lstlisting}
