@@ -71,19 +71,43 @@ $ git config --global user.name "i22lojal"
 $ git config --global user.email "i22lojal@uco.es"
 \end{lstlisting}
 
+He utilizado los comandos siguientes sin que se produzca ninguna salida por consola.
+\begin{lstlisting}[xleftmargin=.16\textwidth,language=bash]
+$ git config --global user.name "i12arrae"
+$ git config --global user.email "i12arrae@uco.es"
+\end{lstlisting}
+
 
 \section{Ejercicio 3}
 \begin{center}
     \parbox{12cm}{\justify\textit{Vamos a crear un nuevo repositorio desde cero (puedes usar uno tuyo o seguir el breve ejemplo que se describe a continuación). Crea en tu cuenta un nuevo directorio que se llame “reposlycs”. Entra en dicho directorio e inicializa el repositorio (\code{\$git init}). Comprueba la creación del directorio .git. ¿Qué función tiene este directorio?
     }}
 \end{center}
+He creado un directorio en mi home llamado ``prueba''
+\begin{lstlisting}[xleftmargin=.16\textwidth,language=bash]
+$ cd ~
+$ mkdir reposlycs
+$ cd reposlycs
+$ git init
+Inicializado repositorio Git vacío en /home/eduarroyo/reposlycs/.git/
+\end{lstlisting}
 
+El comando ha creado un directorio llamado \code{.git}. Este directorio contiene todos los datos que Git necesita para el repositorio local. A destacar:
+\begin{itemize}
+    \item Directorio objects: contiene todos los objetos del repositorio comprimidos y encriptados.
+    \item Archivo config: contiene la configuración de Git para el proyecto
+    \item Directorio refs: mantiene las referencias a las direfentes etiquetas y ramas del repositorio.
+    \item Archivo HEAD: mantiene una referencia a la rama actual.
+\end{itemize}
 
 \section{Ejercicio 4}
 \begin{center}
     \parbox{12cm}{\justify\textit{Crea un directorio que cuelgue del anterior llamado ``include''.
     }}
 \end{center}
+\begin{lstlisting}[xleftmargin=.16\textwidth,language=bash]
+$ mkdir include
+\end{lstlisting}
 
 \section{Ejercicio 5}
 \begin{center}
@@ -112,6 +136,11 @@ void f()
     printf("Hello World \n");
 }\end{lstlisting}
 
+\begin{lstlisting}[xleftmargin=.16\textwidth,language=bash]
+$ touch helloworld.c
+$ touch include/myinclude.h
+\end{lstlisting}
+
 \section{Ejercicio 6}
 \begin{center}
     \parbox{12cm}{\justify\textit{
@@ -119,12 +148,75 @@ void f()
     }}
 \end{center}
 
+Antes de hacer nada, compruebo el estado del repositorio:
+\begin{lstlisting}[xleftmargin=.16\textwidth,language=bash]
+$ git status
+En la rama master
+
+No hay commits todavía
+
+Archivos sin seguimiento:
+  (usa "git add <archivo>..." para incluirlo a lo que se será 
+  confirmado)
+
+        helloworld.c
+        include/
+
+no hay nada agregado al commit pero hay archivos sin seguimiento
+presentes (usa "git add" para hacerles seguimiento)
+\end{lstlisting}
+
+A continuación añado los dos archivos al seguimiento usando los comandos siguientes:
+\begin{lstlisting}[xleftmargin=.16\textwidth,language=bash]
+$ git add helloworld.c
+$ git add include/myinclude.h
+\end{lstlisting}
+
+Hago la primera confirmación de código:
+\begin{lstlisting}[xleftmargin=.16\textwidth,language=bash]
+$ git commit -m "añadir helloworld.c y myinclude.h"
+[master (commit-raíz) 6f325ad] añadir helloworld.c y myinclude.h
+ 2 files changed, 10 insertions(+)
+ create mode 100644 helloworld.c
+ create mode 100644 include/myinclude.h
+\end{lstlisting}
+
+
+Vuelvo a comprobar el estado del repositorio:
+\begin{lstlisting}[xleftmargin=.16\textwidth,language=bash]
+$ git status
+En la rama master
+nada para hacer commit, el árbol de trabajo está limpio
+\end{lstlisting}
+
 \section{Ejercicio 7}
 \begin{center}
     \parbox{12cm}{\justify\textit{
         Compila y comprueba lo que ocurre con el ejecutable generado. ¿Se podría añadir el ejecutable al staging y luego al commit?. Haz una prueba. ¿Tendría sentido hacer commit de un ejecutable?
     }}
 \end{center}
+
+Compilo:
+\begin{lstlisting}[xleftmargin=.16\textwidth,language=bash]
+$ gcc helloworld.c -o helloworld
+\end{lstlisting}
+
+La compilación ha producido el ejecutable helloworld. Compruebo el estado del repositorio:
+\begin{lstlisting}[xleftmargin=.16\textwidth,language=bash]
+$ git status
+En la rama master
+Archivos sin seguimiento:
+  (usa "git add <archivo>..." para incluirlo a lo que será
+  confirmado)
+
+        helloworld
+
+no hay nada agregado al commit pero hay archivos sin seguimiento
+presentes (usa "git add" para hacerles seguimiento)
+\end{lstlisting}
+
+Podría agregar el ejecutable al seguimiento con \code{\$ git add helloworld} pero no tiene sentido hacerlo ya que es dependiente del código fuente. Cada desarrollador debe compilar su código local para obtener un ejecutable.
+Creo el archivo .gitignore con el contenido helloworld para que git no tenga en cuenta el ejecutable. Añado .gitignore al seguimiento y hago un commit.
 
 \section{Ejercicio 8}
 \begin{center}
@@ -140,6 +232,12 @@ void f()
     return 0;
 }\end{lstlisting}
 \end{center}
+Creo la rama local ``branchA'':
+\begin{lstlisting}[xleftmargin=.16\textwidth,language=bash]
+$ git checkout -b branchA
+Cambiado a nueva rama 'branchA'
+\end{lstlisting}
+A continuación realizo la modificación en el archivo en mi editor de texto.
 
 \section{Ejercicio 9}
 \begin{center}
@@ -147,6 +245,12 @@ void f()
         Realiza el commit con los cambios mencionados en la branchA y el mensaje ``Now with strcat()''.
     }}
 \end{center}
+\begin{lstlisting}[xleftmargin=.16\textwidth,language=bash]
+$git add include/myinclude.h
+$ git commit -m "Now with strcat()"
+[branchA ed2ee6a] Now with strcat()
+ 1 file changed, 1 insertion(+)
+\end{lstlisting}
 
 \section{Ejercicio 10}
 \begin{center}
@@ -154,6 +258,17 @@ void f()
         Cambia a la rama master (\code{\$git checkout master}). En la rama master añade un comentario al inicio del fichero ``helloworld.c'' con la fecha y tu nombre como autor del fichero. Realiza el commit de este cambio en la rama master. Con el mensaje ``Now with date and author''
     }}
 \end{center}
+\begin{lstlisting}[xleftmargin=.16\textwidth,language=bash]
+$ git checkout master
+Cambiado a rama 'master'
+\end{lstlisting}
+Modifico el fichero helloworld.c añadiendo un comentario al principio y confirmo el cambio:
+\begin{lstlisting}[xleftmargin=.16\textwidth,language=bash]
+$ git add helloworld.c
+$ git commit -m "Now with date and author"
+[master 6bfa915] Now with date and author
+ 1 file changed, 1 insertion(+)
+\end{lstlisting}
 
 \section{Ejercicio 11}
 \begin{center}
@@ -161,6 +276,15 @@ void f()
         Desde la rama master, fusiona la rama master con la rama branchA. En este caso no hay ningún conflicto, ambas ramas han modificado distintos archivos. Es un merge sin conflicto.
     }}
 \end{center}
+
+\begin{lstlisting}[xleftmargin=.16\textwidth,language=bash]
+$ git merge branchA
+Merge made by the 'recursive' strategy.
+ .gitignore           | 1 +
+ include/helloworld.h | 5 ++++-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+ create mode 100644 .gitignore
+\end{lstlisting}
 
 \section{Ejercicio 12}
 \begin{center}
