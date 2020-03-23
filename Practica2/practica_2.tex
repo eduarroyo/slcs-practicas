@@ -292,6 +292,36 @@ Merge made by the 'recursive' strategy.
         Repite el proceso del punto anterior pero ahora creando un conflicto (merge con conflicto).
     }}
 \end{center}
+Estando en \code{master}, creo una rama nueva con los comandos
+\begin{lstlisting}[xleftmargin=.16\textwidth,language=bash]
+$ git branch branchB
+eduarroyo@ganimedes:~/reposlycs$ git checkout branchB
+Cambiado a rama 'branchB'
+\end{lstlisting}
+A continuación introduzco una línea en helloworld.c y confirmo los cambios:
+
+\begin{lstlisting}[xleftmargin=.16\textwidth,language=bash]
+$ git add helloworld.c 
+$ git commit -m "Marca desde BranchB"
+[branchB c272698] Marca desde BranchB
+    1 file changed, 3 insertions(+), 1 deletion(-)
+\end{lstlisting}
+
+Vuelvo a rama master e introduzco un cambio en el helloworld.c y confirmo:
+\begin{lstlisting}[xleftmargin=.16\textwidth,language=bash]
+$ git checkout master
+git checkout master
+-- Edito el archivo helloworld.c
+$ git add helloworld.c
+$ git commit -m "Marca desde master"
+[master 8395c14] Marca desde master
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+\end{lstlisting}
+
+Ahora voy a hacer el merge de la rama BranchB:
+\begin{lstlisting}[xleftmargin=.16\textwidth,language=bash]
+$ git merge BranchB
+\end{lstlisting}
 
 \section{Ejercicio 13}
 \begin{center}
@@ -299,6 +329,29 @@ Merge made by the 'recursive' strategy.
         Sube este proyecto a GitHub.
     }}
 \end{center}
+Primero he creado un repositorio nuevo en mi cuenta de github. Luego he ejecutado el siguiente comando:
+
+\begin{lstlisting}[xleftmargin=.16\textwidth,language=bash]
+$ git push --set-upstream https://github.com/eduarroyo/prueba1
+.git master
+git: 'credential-wincred'no es un comando de git. Mira 'git 
+--help'.
+Username for 'https://github.com': eduarroyo
+Password for 'https://eduarroyo@github.com': 
+git: 'credential-wincred'no es un comando de git. Mira 'git
+--help'.
+Enumerando objetos: 18, listo.
+Contando objetos: 100% (18/18), listo.
+Compresión delta usando hasta 4 hilos
+Comprimiendo objetos: 100% (15/15), listo.
+Escribiendo objetos: 100% (18/18), 1.84 KiB | 1.84 MiB/s, listo.
+Total 18 (delta 1), reusado 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/eduarroyo/prueba1.git
+ * [new branch]      master -> master
+Rama 'master' configurada para hacer seguimiento a la rama 
+remota 'master' de 'https://github.com/eduarroyo/prueba1.git'.
+\end{lstlisting}
 
 \section{Ejercicio 14}
 \begin{center}
@@ -306,3 +359,17 @@ Merge made by the 'recursive' strategy.
         Bájate un proyecto de GitHub de uno de tus compañeros (o de cualquier otra  persona) a tu cuenta local.
     }}
 \end{center}
+
+Desde mi home, voy a clonar el repositorio donde tengo las prácticas de la asignatura en \LaTeX :
+\begin{lstlisting}[xleftmargin=.16\textwidth,language=bash]
+$ cd ~ 
+$ git clone https://github.com/eduarroyo/slcs-practicas.git
+Clonando en 'slcs-practicas'...
+remote: Enumerating objects: 73, done.
+remote: Counting objects: 100% (73/73), done.
+remote: Compressing objects: 100% (40/40), done.
+remote: Total 73 (delta 24), reused 65 (delta 16),
+pack-reused 0
+Desempaquetando objetos: 100% (73/73), listo.
+\end{lstlisting}
+Se ha creado el direcotrio slcs-practicas con todo el contenido del repositorio remoto.
