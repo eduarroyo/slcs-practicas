@@ -1,5 +1,4 @@
 \part{Práctica 2}
-\setcounter{section}{0}
 \section{Ejercicio 1}
 \begin{center}
     \parbox{12cm}{\justify\textit{Explica brevemente qué es un sistema de control de versiones distribuido y sus diferencias con respecto a uno centralizado. Entra en la web de Git y revisa la documentación. Busca manuales, tutoriales, etc. de Git. Describe y compara con Git algún otro sistema de control de versiones distribuido (Mercurial, etc.).
@@ -62,13 +61,13 @@ Según Intland Software, las principales diferencias entre Git y Mercurial son l
 \section{Ejercicio 2}
 \begin{center}
     \parbox{12cm}{\justify\textit{
-        Establece tu nombre de usuario y dirección de correo electrónico. Esto es importante porque las confirmaciones de cambios (commits) en Git usan esta información, y es introducida de manera inmutable en los commits que envías. Utiliza tu usuario y correo de la uco, por ejemplo:}}
+        Establece tu nombre de usuario y dirección de correo electrónico. Esto es importante porque las confirmaciones de cambios (commits) en Git usan esta información, y es introducida de manera inmutable en los commits que envías. Utiliza tu usuario y correo de la UCO.}}
     \end{center}
 
-
-\begin{lstlisting}[xleftmargin=.16\textwidth,language=bash]
-$ git config --global user.name "i22lojal"
-$ git config --global user.email "i22lojal@uco.es"
+Se han utilizado los comandos siguientes sin que se produzca ninguna salida por consola.
+\begin{lstlisting}[basicstyle=\small,xrightmargin=.10\textwidth,xleftmargin=.10\textwidth,language=bash]
+$ git config --global user.name "i12arrae"
+$ git config --global user.email "i12arrae@uco.es"
 \end{lstlisting}
 
 
@@ -77,13 +76,31 @@ $ git config --global user.email "i22lojal@uco.es"
     \parbox{12cm}{\justify\textit{Vamos a crear un nuevo repositorio desde cero (puedes usar uno tuyo o seguir el breve ejemplo que se describe a continuación). Crea en tu cuenta un nuevo directorio que se llame “reposlycs”. Entra en dicho directorio e inicializa el repositorio (\code{\$git init}). Comprueba la creación del directorio .git. ¿Qué función tiene este directorio?
     }}
 \end{center}
+Crear un directorio en \code{home} llamado ``prueba''
+\begin{lstlisting}[basicstyle=\small,xrightmargin=.10\textwidth,xleftmargin=.10\textwidth,language=bash]
+$ cd ~
+$ mkdir reposlycs
+$ cd reposlycs
+$ git init
+Creado repositorio Git local en /home/eduarroyo/reposlycs/.git/
+\end{lstlisting}
 
+El comando ha creado un directorio llamado \code{.git}. Este directorio contiene todos los datos que Git necesita para el repositorio local. A destacar:
+\begin{itemize}
+    \item Directorio objects: contiene todos los objetos del repositorio comprimidos y encriptados.
+    \item Archivo config: contiene la configuración de Git para el proyecto
+    \item Directorio refs: mantiene las referencias a las direfentes etiquetas y ramas del repositorio.
+    \item Archivo HEAD: mantiene una referencia a la rama actual.
+\end{itemize}
 
 \section{Ejercicio 4}
 \begin{center}
     \parbox{12cm}{\justify\textit{Crea un directorio que cuelgue del anterior llamado ``include''.
     }}
 \end{center}
+\begin{lstlisting}[basicstyle=\small,xrightmargin=.10\textwidth,xleftmargin=.10\textwidth,language=bash]
+$ mkdir include
+\end{lstlisting}
 
 \section{Ejercicio 5}
 \begin{center}
@@ -112,6 +129,12 @@ void f()
     printf("Hello World \n");
 }\end{lstlisting}
 
+Los archivos se crean con \code{touch} y luego se modifican con el editor de textos:
+\begin{lstlisting}[basicstyle=\small,xrightmargin=.10\textwidth,xleftmargin=.10\textwidth,language=bash]
+$ touch helloworld.c
+$ touch include/myinclude.h
+\end{lstlisting}
+
 \section{Ejercicio 6}
 \begin{center}
     \parbox{12cm}{\justify\textit{
@@ -119,12 +142,76 @@ void f()
     }}
 \end{center}
 
+Antes de hacer nada, compruebo el estado del repositorio:
+\begin{lstlisting}[basicstyle=\small,xrightmargin=.10\textwidth,xleftmargin=.10\textwidth,language=bash]
+$ git status
+En la rama master
+
+No hay commits todavía
+
+Archivos sin seguimiento:
+  (usa "git add <archivo>..." para incluirlo a lo que se será 
+  confirmado)
+
+        helloworld.c
+        include/
+
+no hay nada agregado al commit pero hay archivos sin seguimiento 
+presentes (usa "git add" para hacerles seguimiento)
+\end{lstlisting}
+
+A continuación se añaden los dos archivos al seguimiento:
+\begin{lstlisting}[basicstyle=\small,xrightmargin=.10\textwidth,xleftmargin=.10\textwidth,language=bash]
+$ git add helloworld.c
+$ git add include/myinclude.h
+\end{lstlisting}
+
+Primera confirmación de código:
+\begin{lstlisting}[basicstyle=\small,xrightmargin=.10\textwidth,xleftmargin=.10\textwidth,language=bash]
+$ git commit -m "añadir helloworld.c y myinclude.h"
+[master (commit-raíz) 6f325ad] añadir helloworld.c y
+myinclude.h 2 files changed, 10 insertions(+)
+ create mode 100644 helloworld.c
+ create mode 100644 include/myinclude.h
+\end{lstlisting}
+
+
+Comprobar de nuevo el estado del repositorio:
+\begin{lstlisting}[basicstyle=\small,xrightmargin=.10\textwidth,xleftmargin=.10\textwidth,language=bash]
+$ git status
+En la rama master
+nada para hacer commit, el árbol de trabajo está limpio
+\end{lstlisting}
+
 \section{Ejercicio 7}
 \begin{center}
     \parbox{12cm}{\justify\textit{
         Compila y comprueba lo que ocurre con el ejecutable generado. ¿Se podría añadir el ejecutable al staging y luego al commit?. Haz una prueba. ¿Tendría sentido hacer commit de un ejecutable?
     }}
 \end{center}
+
+Compilar:
+\begin{lstlisting}[basicstyle=\small,xrightmargin=.10\textwidth,xleftmargin=.10\textwidth,language=bash]
+$ gcc helloworld.c -o helloworld
+\end{lstlisting}
+
+La compilación ha producido el ejecutable helloworld. Compruebo el estado del repositorio:
+
+\begin{lstlisting}[basicstyle=\small,xrightmargin=.10\textwidth,xleftmargin=.10\textwidth,language=bash]
+$ git status
+En la rama master
+Archivos sin seguimiento:
+  (usa "git add <archivo>..." para incluirlo a lo que será
+  confirmado)
+
+        helloworld
+
+no hay nada agregado al commit pero hay archivos sin seguimiento
+presentes (usa "git add" para hacerles seguimiento)
+\end{lstlisting}
+
+Podría agregar el ejecutable al seguimiento con \code{\$ git add helloworld} pero no tiene sentido hacerlo ya que es dependiente del código fuente. Cada desarrollador debe compilar su código local para obtener un ejecutable.
+Creo el archivo .gitignore con el contenido helloworld para que git no tenga en cuenta el ejecutable. Añado .gitignore al seguimiento y hago un commit.
 
 \section{Ejercicio 8}
 \begin{center}
@@ -141,12 +228,26 @@ void f()
 }\end{lstlisting}
 \end{center}
 
+Creo la rama local ``branchA'':
+\begin{lstlisting}[basicstyle=\small,xrightmargin=.10\textwidth,xleftmargin=.10\textwidth,language=bash]
+$ git checkout -b branchA
+Cambiado a nueva rama 'branchA'
+\end{lstlisting}
+A continuación se realiza la modificación en el archivo en el editor de texto.
+
 \section{Ejercicio 9}
 \begin{center}
     \parbox{12cm}{\justify\textit{
         Realiza el commit con los cambios mencionados en la branchA y el mensaje ``Now with strcat()''.
     }}
 \end{center}
+Primero se añade el archivo al seguimiento, luego se realiza la confirmación:
+\begin{lstlisting}[basicstyle=\small,xrightmargin=.10\textwidth,xleftmargin=.10\textwidth,language=bash]
+$git add include/myinclude.h
+$ git commit -m "Now with strcat()"
+[branchA ed2ee6a] Now with strcat()
+ 1 file changed, 1 insertion(+)
+\end{lstlisting}
 
 \section{Ejercicio 10}
 \begin{center}
@@ -155,6 +256,18 @@ void f()
     }}
 \end{center}
 
+\begin{lstlisting}[basicstyle=\small,xrightmargin=.10\textwidth,xleftmargin=.10\textwidth,language=bash]
+$ git checkout master
+Cambiado a rama 'master'
+\end{lstlisting}
+Modifico el fichero helloworld.c añadiendo un comentario al principio y confirmo el cambio:
+\begin{lstlisting}[basicstyle=\small,xrightmargin=.10\textwidth,xleftmargin=.10\textwidth,language=bash]
+$ git add helloworld.c
+$ git commit -m "Now with date and author"
+[master 6bfa915] Now with date and author
+ 1 file changed, 1 insertion(+)
+\end{lstlisting}
+
 \section{Ejercicio 11}
 \begin{center}
     \parbox{12cm}{\justify\textit{
@@ -162,12 +275,52 @@ void f()
     }}
 \end{center}
 
+Para fusionar las ramas se utiliza el comando \code{merge}:
+\begin{lstlisting}[basicstyle=\small,xrightmargin=.10\textwidth,xleftmargin=.10\textwidth,language=bash]
+$ git merge branchA
+Merge made by the 'recursive' strategy.
+ .gitignore           | 1 +
+ include/helloworld.h | 5 ++++-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+ create mode 100644 .gitignore
+\end{lstlisting}
+
 \section{Ejercicio 12}
 \begin{center}
     \parbox{12cm}{\justify\textit{
         Repite el proceso del punto anterior pero ahora creando un conflicto (merge con conflicto).
     }}
 \end{center}
+Estando en \code{master}, creo una rama nueva con los comandos
+\begin{lstlisting}[basicstyle=\small,xrightmargin=.10\textwidth,xleftmargin=.10\textwidth,language=bash]
+$ git branch branchB
+eduarroyo@ganimedes:~/reposlycs$ git checkout branchB
+Cambiado a rama 'branchB'
+\end{lstlisting}
+A continuación introduzco una línea en helloworld.c y confirmo los cambios:
+
+\begin{lstlisting}[basicstyle=\small,xrightmargin=.10\textwidth,xleftmargin=.10\textwidth,language=bash]
+$ git add helloworld.c 
+$ git commit -m "Marca desde BranchB"
+[branchB c272698] Marca desde BranchB
+    1 file changed, 3 insertions(+), 1 deletion(-)
+\end{lstlisting}
+
+Vuelvo a rama master e introduzco un cambio en el helloworld.c y confirmo:
+\begin{lstlisting}[basicstyle=\small,xrightmargin=.10\textwidth,xleftmargin=.10\textwidth,language=bash]
+$ git checkout master
+git checkout master
+-- Edito el archivo helloworld.c
+$ git add helloworld.c
+$ git commit -m "Marca desde master"
+[master 8395c14] Marca desde master
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+\end{lstlisting}
+
+Ahora voy a hacer el merge de la rama BranchB:
+\begin{lstlisting}[basicstyle=\small,xrightmargin=.10\textwidth,xleftmargin=.10\textwidth,language=bash]
+$ git merge BranchB
+\end{lstlisting}
 
 \section{Ejercicio 13}
 \begin{center}
@@ -175,6 +328,26 @@ void f()
         Sube este proyecto a GitHub.
     }}
 \end{center}
+Primero he creado un repositorio nuevo en mi cuenta de github. Luego he ejecutado el siguiente comando:
+
+\begin{lstlisting}[basicstyle=\small,xrightmargin=.10\textwidth,xleftmargin=.10\textwidth,language=bash]
+$ git push --set-upstream https://github.com/eduarroyo/prueba1
+.git master
+Username for 'https://github.com': eduarroyo
+Password for 'https://eduarroyo@github.com': 
+Enumerando objetos: 18, listo.
+Contando objetos: 100% (18/18), listo.
+Compresión delta usando hasta 4 hilos
+Comprimiendo objetos: 100% (15/15), listo.
+Escribiendo objetos: 100% (18/18), 1.84 KiB | 1.84 MiB/s,
+listo.
+Total 18 (delta 1), reusado 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/eduarroyo/prueba1.git
+ * [new branch]      master -> master
+Rama 'master' configurada para hacer seguimiento a la rama 
+remota 'master' de 'https://github.com/eduarroyo/prueba1.git'.
+\end{lstlisting}
 
 \section{Ejercicio 14}
 \begin{center}
@@ -182,3 +355,17 @@ void f()
         Bájate un proyecto de GitHub de uno de tus compañeros (o de cualquier otra  persona) a tu cuenta local.
     }}
 \end{center}
+
+Desde el directorio \code{home}, se clona el repositorio donde están las prácticas de la asignatura en \LaTeX :
+\begin{lstlisting}[basicstyle=\small,xrightmargin=.10\textwidth,xleftmargin=.10\textwidth,language=bash]
+$ cd ~ 
+$ git clone https://github.com/eduarroyo/slcs-practicas.git
+Clonando en 'slcs-practicas'...
+remote: Enumerating objects: 73, done.
+remote: Counting objects: 100% (73/73), done.
+remote: Compressing objects: 100% (40/40), done.
+remote: Total 73 (delta 24), reused 65 (delta 16),
+pack-reused 0
+Desempaquetando objetos: 100% (73/73), listo.
+\end{lstlisting}
+Se ha creado el direcotrio slcs-practicas con todo el contenido del repositorio remoto.
