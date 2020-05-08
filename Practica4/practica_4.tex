@@ -13,7 +13,7 @@
     \item ¿Cómo crees que podría mejorarse el uso de GNU/Linux en escritorios?
     \item ¿Qué es snap y snapcraft.io? ¿para qué sirve y qué diferencias aporta al sistema tradicional de instalación de paquetes de GNU/Linux?
     \item Buscar cómo se instala snap en mi distribución en la documentación de snap.
-    Instalar y probar snap
+    \item Instalar y probar snap
     \item ¿Crees que mejora en el sentido de facilitar el uso de GNU/Linux?
     \end{enumerate}}}
 \end{center}
@@ -26,8 +26,7 @@ Estos gráficos muestran los datos de abril de 2020 sobre el porcentaje de uso d
         \pie [cloud, scale font, radius=2, text=legend]
         {76.5/Windows, 18.99/OS X, 1.61/Linux, 1.12/Chrome OS, 1.75/Otros}
     \end{tikzpicture}
-    \caption[]{Uso de los principales SO de escritorio en abril de 2020 en el mundo.}
-    \label{fig:uso-so-mundial}
+    \caption{Uso de los principales SO de escritorio en abril de 2020 en el mundo.}\label{fig:uso-so-mundial}
 \end{figure}
 \begin{figure}[H]
     \centering
@@ -35,8 +34,7 @@ Estos gráficos muestran los datos de abril de 2020 sobre el porcentaje de uso d
         \pie [cloud, scale font, radius=2, text=legend]
         {76.1/Windows, 20.62/OS X, 1.71/Linux, 0.46/Chrome OS, 1.11/Otros}
     \end{tikzpicture}
-    \caption[]{Uso de los principales SO de escritorio en abril de 2020 en España.}
-    \label{fig:uso-so-españa}
+    \caption{Uso de los principales SO de escritorio en abril de 2020 en España.}\label{fig:uso-so-españa}
 \end{figure}
 
 \subsection{Pregunta 2}
@@ -45,14 +43,24 @@ Sin duda, el principal factor que mejoraría el porcentaje de uso de GNU/Linux a
 En mi opinión, la dificultad de uso no es un factor que frene la adopción de GNU/Linux para el usuario medio de hoy. Si algo detiene al usuario a la hora de decidir utilizar un sistema operativo diferente es hábito, el aferrarse a lo que conoce y rechazar el cambio.
 
 \subsection{Pregunta 3}
-Un snap es un sistema de gestión de paquetes paquete de aplicación para escritorio, nube o IoT, creado y diseñado por Canonical. \href{http://snapcraft.io}{snapcraft.io} es la herramienta que utilizan los desarrolladores para empaquetar sus programas en formato snap.
-La principal ventaja de snap frente a otros sistemas de gestión de paquetes es ser independiente de la distribución en la que se instala. Los propios snaps no dependen de ninguna tienda de aplicaciones y se pueden obtener de cualquier forma.
+<<Snap>> es un sistema de gestión de paquetes paquete de aplicación para escritorio, nube o IoT, creado y diseñado por Canonical. \href{http://snapcraft.io}{snapcraft.io} es la herramienta que utilizan los desarrolladores para empaquetar sus programas en formato snap.
+La principal ventaja de snap frente a otros sistemas de gestión de paquetes es ser independiente de la distribución en la que se instala. Los propios snaps no dependen de ninguna tienda de aplicaciones y se pueden obtener de cualquier forma. El inconveniente de Snap es el mayor tamaño de sus paquetes, ya que cada uno viene con sus dependencias incluidas.
 
 \subsection{Pregunta 4}
-
+Según las instrucciones para la \href{https://snapcraft.io/docs/installing-snap-on-ubuntu}{instalación de snap en Ubuntu}\footnote{\label{nota1}\url{https://snapcraft.io/docs/installing-snap-on-ubuntu}}, snap se instala por defecto en Ubuntu 20.04, que es la distribución que tengo actualmente instalada.
 
 \subsection{Pregunta 5}
+Como snap se instaló automáticamente con mi Ubuntu, paso a comprobar la instalación siguiendo las instrucciones que dan en \href{https://snapcraft.io/docs/installing-snap-on-ubuntu}{snapcraft.io}\footnotemark[1]. En la figura \ref{fig:ubuntu-snap} se puede ver la ejecución del comando snap sin parámetros, la instalación del paquete \code{hello-world} y la ejecución posterior del programa instalado.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{comprobacion-ubuntu-snap}
+    \caption{Comprobación de funcionamiento de snap}
+    \label{fig:ubuntu-snap}
+\end{figure}
+
+\subsection{Pregunta 6}
+Al menos en Ubuntu, la tienda de aplicaciones que conocía, junto con \code{npm}, el conocido gestor de paquetes, hacían bastante fácil la instalación de aplicaciones en GNU/Linux. Sin duda, el carácter multiplataforma de snap contribuye a una mayor homogeneización del software entre las distintas distribuciones, pero sobre todo facilita el trabajo a los desarrolladores, que sólo tienen que empaquetar sus aplicaciones en un sistema.
 
 \section{Ejercicio 2}
 \begin{center}
