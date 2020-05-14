@@ -22,3 +22,23 @@
     \end{itemize}
     }}
 \end{center}
+
+\section{Pregunta 1}
+He instalado Xabber en mi teléfono y he creado una cuenta XMPP desde la misma app. También he instalado Pidgin en mi ordenador y he estado haciendo algunas pruebas. En mi opinión, el éxito o el fracaso de una red de mensajería instantánea no depende tanto del cliente que se utilice sino de la capacidad para crear una comunidad de usuarios. Al fin y al cabo, la gente irá a la red donde están sus contactos y tras la llegada de los smartphones, la primera red en hacerse con el mercado de la mensajería fue Whatsapp, por lo que todo el mundo está allí y muy poca gente se va a mover. Por otra parte, ante las ventajas evidentes que proporcionan otras redes de MI más respetuosas con los usuarios, de nuevo bajo mi punto de vista, el usuario promedio permanece indiferente. Le importa más quién está en la red que las ventajas que ofrezca.
+
+\section{Pregunta 2}
+Aunque tanto las aplicaciones cliente como la biblioteca TDLIB para construcción de clientes o el mismo el protocolo MTPROTO de Telegram están licenciados bajo licencias FOSS como GPL, X11(MIT) o Boost, Telegram no se puede considerar como un sistema de MI libre ya que el software del servidor no es libre. En mi opinión, las libertades de los usuarios de su software no se encuentran entre las prioridades de Telegram FZ-LLC, por lo que, de abrir el código del servidor, su sistema sería en todo caso Open Source, pero no libre.
+
+\section{Pregunta 3}
+OTR es un sistema de encriptación para MI que permite a los usuarios tener sesiones de chat seguras. OTR proporciona cuatro beneficios principales:
+\begin{itemize}
+    \item Encriptación extremo a extremo: el mensaje se encripta en el lado del remitente y sólo se desencripta en el lado del destinatario. Nada ni nadie entre ellos dos puede leer el mensaje.
+    \item ``Forward secrecy'': este sistema de encriptación permite proteger los mensajes pasados contra futuros compromisos de claves de cifrado o contraseñas.
+    \item Autenticación mutua: garantiza que la persona con la que chateas es realmente ella y viceversa.
+    \item Autenticación denegable: hace imposible para un tercero probar la autoría de un determinado mensaje.
+\end{itemize}
+
+Ninguna de las redes de mensajería que utilizo implementa este protocolo pero, según parece, algunas de ellas están soportadas por plugins de Pidgin y este cuenta con un \href{https://otr.cypherpunks.ca/}{plugin}\footnote{\url{https://otr.cypherpunks.ca/}} que aplica este cifrado sobre cualquier protocolo que soporte el cliente.
+
+\section{Pregunta 4}
+\emph{GNU Privacy Guard} (GnuPG) es una implementación libre y completa del estándar OpenPGP y permite encriptar y firmar tus comunicaciones. Para utilizar este sistema con mi cuenta de correo personal primaria (gmail), necesitaría una herramienta para el navegador y para Android. Para el navegador he encontrado varios plugins como \href{https://flowcrypt.com/}{FlowCrypt}\footnote{\url{https://flowcrypt.com/}} o \href{https://www.mailvelope.com/en/}{Mailevelope}\footnote{\url{https://www.mailvelope.com/en/}} que son compatibles con Gmail. En el caso de Android, tendría que dejar de usar la app oficial de Gmail para utilizar un cliente de correo que lo soportase este cifrado, como \href{https://email.faircode.eu/}{FairEmail}\footnote{\url{https://email.faircode.eu/}}, \href{https://www.openkeychain.org/}{OpenKeychain}\footnote{\url{https://www.openkeychain.org/}} o \href{https://k9mail.app/}{k-9 Mail}\footnote{\url{https://k9mail.app/}}.
